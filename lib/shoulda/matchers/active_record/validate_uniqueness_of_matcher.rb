@@ -386,7 +386,7 @@ module Shoulda
           else
             all_records = @subject.class.all
             @options[:scopes].all? do |scope|
-              previous_value = all_records.map(&scope).max
+              previous_value = all_records.map{ |x| x[scope].to_s }.max
 
               next_value =
                 if previous_value.blank?
